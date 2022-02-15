@@ -6,7 +6,7 @@ const mongoose =require('mongoose')
 
 app.use(express.json())
 
-// O'zgartirilmasin bu online baza local emas foydalanish uchun internetga ulanishiz talab qilinadi !!!
+// O'zgartirilmasin bu online baza. local emas foydalanish uchun internetga ulanishiz talab qilinadi !!!
 const url = `mongodb+srv://theBest:1020@cluster0.m79kn.mongodb.net/EducationMERN`;
 
 const connectionParams={
