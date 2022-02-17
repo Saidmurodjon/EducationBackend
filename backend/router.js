@@ -1,0 +1,11 @@
+const express=require('express')
+const router=express.Router()
+const teacherRouter=require('./teachers/teacher.router')
+// const resultRouter=require('./result/result.router')
+// const questionRouter=require('./question/question.router')
+// const securityRouter=require('./security/security.router')
+router.use('/teachers',teacherRouter)
+// router.use('/result',resultRouter)
+// router.use('/question',questionRouter)
+// router.use('/security',securityRouter)
+module.exports=router

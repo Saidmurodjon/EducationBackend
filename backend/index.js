@@ -1,16 +1,25 @@
 const express=require('express')
 const app=express()
 const mongoose =require('mongoose')
-// const appRouter=require('./router')
+const appRouter=require('./router')
+const cors =require('cors')
+const bcrypt=require('bcrypt')
+const  path  = require('path')
 
 
 app.use(express.json())
+app.use(cors())
+// async function Tuz() {
+//     let tuz=await bcrypt.genSalt()
+//     console.log(tuz);
+// }
+// Tuz()
 
-// O'zgartirilmasin bu online baza. local emas foydalanish uchun internetga ulanishiz talab qilinadi !!!
 const url = `mongodb+srv://theBest:1020@cluster0.m79kn.mongodb.net/EducationMERN`;
 
 const connectionParams={
     useNewUrlParser: true,
+    
     useUnifiedTopology: true 
 }
 mongoose.connect(url,connectionParams)
@@ -22,7 +31,7 @@ mongoose.connect(url,connectionParams)
     })
     
     
-// app.use('/',appRouter)
+app.use('/',appRouter)
 
 
 app.listen(5000, ()=>{
