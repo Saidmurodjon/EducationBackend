@@ -1,11 +1,16 @@
 const express=require('express')
 const router=express.Router()
 const teacherRouter=require('./teachers/teacher.router')
-// const resultRouter=require('./result/result.router')
-// const questionRouter=require('./question/question.router')
-// const securityRouter=require('./security/security.router')
+const adminRouter=require('./admin/admin.router')
+const auth=require('./jwt/auth')
+const EduGroupRouter = require('./EduGroup/EduGroup.router')
+const jwtVerify=require('./jwt/jwtVerify')
+
+router.use('/login',auth)
+router.use(jwtVerify)
 router.use('/teachers',teacherRouter)
-// router.use('/result',resultRouter)
-// router.use('/question',questionRouter)
-// router.use('/security',securityRouter)
+router.use('/addAdmin',adminRouter)
+
+router.use('/EduGroup', EduGroupRouter)
+
 module.exports=router

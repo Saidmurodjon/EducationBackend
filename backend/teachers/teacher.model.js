@@ -7,7 +7,11 @@ const teacherSchema = mongoose.Schema({
     birth:String,
     login:String,
     password: String,
-    imagePath:{type:String,required:true}
+    imagePath: {
+        type: String,
+        trim: true,
+        required: true
+    }
     // role:{
     //     type:String,
     //     default:"user"
