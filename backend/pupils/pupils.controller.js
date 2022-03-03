@@ -1,8 +1,8 @@
 const PupilsModel=require('./puplis.model')
-// const fs = require('fs');
-// const gutil = require('gulp-util');
-// const fs = require('fs');
-
+// var QRCode      =   require('qrcode');
+const fs = require('fs');
+const path = require('path');
+const upload = require('../teachers/upload');
 async function getPupils(req,res) {
     try{
         const pupils=await PupilsModel.find({})
@@ -15,11 +15,9 @@ async function getPupils(req,res) {
 
 async function addPupils(req,res) {
     try{
-        // const teacher=await TeacherModel.create(req.body)
-        // return res.status(200).send(teacher)
-       
-        let image =Date.now()+req.file.originalname
-        console.log(image)
+        let image =req.file.originalname
+        
+
         const category = new PupilsModel({
             
             name:req.body.name,
@@ -32,6 +30,7 @@ async function addPupils(req,res) {
             imagePath: image,
             qrcode:req.body.qrcode
         })
+      
         category.save((err, category) => {
             if (err) {
                 console.log(err)
@@ -52,7 +51,17 @@ async function addPupils(req,res) {
 async function updatePupils(req,res) {
     try{
         let userId=req.params.id
-        let image =Date.now()+req.file.originalname
+        let del= await PupilsModel.findOne({userId})
+        
+        // console.log(del.imagePath);
+
+        fs.unlink( `/home/kali/theBest/EducationMERN/backend/uploads/${del.imagePath}`, function (err) {            
+            if (err) {                                                 
+                console.error(err);                                    
+            }                                                          
+           console.log('File has been Deleted');                           
+        }); 
+        let image =req.file.originalname
         let category = ({
             
             name:req.body.name,
@@ -63,9 +72,8 @@ async function updatePupils(req,res) {
             paymet:req.body.paymet,
             group: req.body.group,
             imagePath: image,
-            qrcode:req.body.qrcode
+            // qrcode:req.body.qrcode
         })
-        // console.log(category);
         let result=await PupilsModel.findByIdAndUpdate(userId,category)
       
         return res.status(200).send(result)
@@ -79,7 +87,17 @@ async function deletePupils(req,res) {
         
        
         let userId=req.params.id
-        // let del= await TeacherModel.findOne({userId})
+        let del= await PupilsModel.findOne({userId})
+        
+        console.log(del.imagePath);
+
+        fs.unlink( `/home/kali/theBest/EducationMERN/backend/uploads/${del.imagePath}`, function (err) {            
+            if (err) {                                                 
+                console.error(err);                                    
+            }                                                          
+           console.log('File has been Deleted');                           
+        }); 
+
         let result=await PupilsModel.findByIdAndDelete(userId)
         // console.log(del.imagePath); 
         // fs.unlinkSync();

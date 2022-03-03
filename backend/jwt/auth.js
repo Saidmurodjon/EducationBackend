@@ -21,17 +21,17 @@ router.route('/').post(async (req,res)=>{
                     {message:"tokencreated"},
                     config.secretKey,
                     {expiresIn:config.expiresAt}
-
-                )
-                return res.status(200).json({
-                    jwt_token:jwtToken,
-                    type:"user"
-                })
-        }else if(admin){
-                 const  jwtToken= jwt.sign(
-                    {message:"tokencreated"},
-                    config.secretKey,
-                    {expiresIn:config.expiresAt}
+                    
+                    )
+                    return res.status(200).json({
+                        jwt_token:jwtToken,
+                        type:"user"
+                    })
+                }else if(admin){
+                    const  jwtToken= jwt.sign(
+                        {message:"tokencreated"},
+                        config.secretKey,
+                        {expiresIn:config.expiresAt}
 
                 )
                 return res.status(200).json({
