@@ -1,5 +1,6 @@
 const express=require('express')
 const router=express.Router()
+const path=require('path')
 const teacherRouter=require('./teachers/teacher.router')
 const adminRouter=require('./admin/admin.router')
 const auth=require('./jwt/auth')
@@ -14,7 +15,7 @@ router.use('/login',auth)
 router.use('/teachers',teacherRouter)
 router.use('/addAdmin',adminRouter)
 router.use('/pupils',pupilsRouter)
-
+router.use('/uploads',express.static((__dirname,"uploads")))
 // Asror aka tayyorladi
 router.use('/eduGroup', eduGroupRouter)
 router.use('/eduCame', eduCameRouter)
