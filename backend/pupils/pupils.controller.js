@@ -108,9 +108,30 @@ async function deletePupils(req,res) {
         res.status(400).send(err)
     }
 }
+
+// to`lov uchun 
+async function payPupils(req,res){
+    try{
+        let userId=req.params.id
+        let pay= await PupilsModel.findOne({_id:userId})
+        console.log(userId);
+        console.log(pay);
+        // push qilish
+        if(req.body.month) {
+            pay.paymet.push(req.body)
+        }
+        pay.save()
+        return res.status(200).send(pay)
+    }catch(err){
+        res.status(404).send(err)
+        console.log(err);
+    }
+}
+
 module.exports={
     getPupils,
     addPupils,
     updatePupils,
-    deletePupils
+    deletePupils,
+    payPupils
 }

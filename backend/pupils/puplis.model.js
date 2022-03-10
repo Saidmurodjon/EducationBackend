@@ -6,7 +6,10 @@ const pupilsSchema = mongoose.Schema({
     parentsPhoneNumber:String,
     birth:String,
     group:String,
-    paymet: String,
+    paymet: [{
+        month:String,
+        cost:String
+    }],
     qrcode:String,
     imagePath: {
         type: String,
