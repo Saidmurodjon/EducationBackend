@@ -3,7 +3,11 @@ const eduCameSchema = mongoose.Schema({
     date: String,
     pupilId: String,
     came: Boolean,
-    back: Boolean
+    back: Boolean,
+    name: String,
+    subject: String,
+    imgPath: String
+
 
 })
 
