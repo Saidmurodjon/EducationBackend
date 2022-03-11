@@ -10,7 +10,7 @@ const pupilsSchema = mongoose.Schema({
         month:String,
         cost:String
     }],
-    qrcode:String,
+    subject:String,
     imagePath: {
         type: String,
         trim: true,

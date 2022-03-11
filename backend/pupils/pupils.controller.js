@@ -1,5 +1,5 @@
 const PupilsModel=require('./puplis.model')
-// var QRCode      =   require('qrcode');
+// var subject      =   require('subject');
 const fs = require('fs');
 const path = require('path');
 const upload = require('../teachers/upload');
@@ -28,7 +28,7 @@ async function addPupils(req,res) {
             paymet:req.body.paymet,
             group: req.body.group,
             imagePath: image,
-            qrcode:req.body.qrcode
+            subject:req.body.subject
         })
       
         category.save((err, category) => {
@@ -72,7 +72,7 @@ async function updatePupils(req,res) {
             paymet:req.body.paymet,
             group: req.body.group,
             imagePath: image,
-            // qrcode:req.body.qrcode
+            subject:req.body.subject
         })
         let result=await PupilsModel.findByIdAndUpdate(userId,category)
       
