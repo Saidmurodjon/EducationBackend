@@ -5,7 +5,7 @@ const appRouter=require('./router')
 const cors =require('cors')
 const bcrypt=require('bcrypt')
 const  path  = require('path')
-
+const port=process.env.PORT ||5000
 
 app.use(express.json())
 app.use(cors())
@@ -34,6 +34,6 @@ mongoose.connect(url,connectionParams)
 app.use('/',appRouter)
 
 
-app.listen(5000, ()=>{
+app.listen(port, ()=>{
     console.log("5000 port working");
 })
