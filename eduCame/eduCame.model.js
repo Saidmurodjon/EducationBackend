@@ -2,8 +2,11 @@ const mongoose = require('mongoose')
 const eduCameSchema = mongoose.Schema({
     date: String,
     pupilId: String,
-    came: Boolean,
-    back: Boolean,
+    came: {
+        type:Boolean,
+        default:true
+    },
+    back:Boolean,
     name: String,
     subject: String,
     imgPath: String
