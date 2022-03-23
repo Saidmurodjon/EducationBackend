@@ -6,7 +6,10 @@ const eduCameSchema = mongoose.Schema({
         type:Boolean,
         default:true
     },
-    back:Boolean,
+    back:{
+        type:Boolean,
+        default:false
+    },
     name: String,
     subject: String,
     imgPath: String
