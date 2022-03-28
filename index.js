@@ -9,11 +9,7 @@ const port=process.env.PORT ||5000
 
 app.use(express.json())
 app.use(cors())
-// async function Tuz() {
-//     let tuz=await bcrypt.genSalt()
-//     console.log(tuz);
-// }
-// Tuz()
+
 
 const url = `mongodb+srv://theBest:1020@cluster0.m79kn.mongodb.net/EducationMERN`;
 
