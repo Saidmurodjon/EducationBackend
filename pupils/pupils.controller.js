@@ -128,10 +128,38 @@ async function payPupils(req,res){
     }
 }
 
-module.exports={
-    getPupils,
-    addPupils,
-    updatePupils,
-    deletePupils,
-    payPupils
+// 2ta yangi function qo'shdim
+// id tekshirish uchun
+
+async function checkPupils(req, res) {
+  try {
+    let userId = req.params.id;
+    let del = await PupilsModel.findOne({ _id: userId });
+    return res.status(200).send(del);
+    // }
+  } catch (err) {
+    res.status(404).send(err);
+  }
 }
+// date o'zgartirish uchun
+async function changePupils(req, res) {
+  try {
+    let userId = req.params.id;
+
+    console.log(req.body);
+    const result = await PupilsModel.findByIdAndUpdate(userId, req.body);
+    return res.status(200).send(result);
+  } catch (err) {
+    res.status(404).send(err);
+    console.log(err);
+  }
+}
+module.exports = {
+  getPupils,
+  addPupils,
+  updatePupils,
+  deletePupils,
+  payPupils,
+  checkPupils,
+  changePupils,
+};

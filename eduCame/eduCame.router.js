@@ -1,21 +1,23 @@
-const express = require('express')
-const router = express.Router()
-const eduCameController = require('./eduCame.contoller')
+const express = require("express");
+const router = express.Router();
+const eduCameController = require("./eduCame.contoller");
 
 // get
 
-router.route('/').get(eduCameController.getEduCame)
+router.route("/").get(eduCameController.getEduCame);
 
 // post
 
-router.route('/').post(eduCameController.addEduCame)
+router.route("/").post(eduCameController.addEduCame);
 
 // put
 
-router.route('/:id').put(eduCameController.updateEduCame)
+router.route("/:id").put(eduCameController.updateEduCame);
 
 // delete
 
-router.route('/:id').delete(eduCameController.deleteEduCame)
+router.route("/:id").delete(eduCameController.deleteEduCame);
 
-module.exports = router
+// yangi sorov qoshdim
+router.route("/change/:id").put(eduCameController.ChangeCame);
+module.exports = router;

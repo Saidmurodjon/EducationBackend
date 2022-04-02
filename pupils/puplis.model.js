@@ -6,6 +6,7 @@ const pupilsSchema = mongoose.Schema({
     parentsPhoneNumber:String,
     birth:String,
     group:String,
+    deyt: {type: Number, default: 0},
     paymet: [{
         month:String,
         cost:String

@@ -46,9 +46,29 @@ async function deleteEduCame(req, res) {
     }
 }
 
-module.exports = {
-    getEduCame,
-    addEduCame,
-    updateEduCame,
-    deleteEduCame
+// new function creative by Saidmurod
+async function ChangeCame(req, res) {
+  try {
+    let eduCameId = req.params.id;
+    const eduCame = await eduCameModel.find({});
+    const data = new Date();
+    const category = {
+      back: true,
+    };
+    eduCame.map(async (elem) => {
+      if (elem.pupilId == eduCameId && elem.date == data.getDate()&& elem.back==false) {
+        let result = await eduCameModel.findByIdAndUpdate(elem._id, category);
+    }
+});
+return res.status(200)
+  } catch (err) {
+    res.status(400).send(err);
+  }
 }
+module.exports = {
+  getEduCame,
+  addEduCame,
+  updateEduCame,
+  deleteEduCame,
+  ChangeCame,
+};
